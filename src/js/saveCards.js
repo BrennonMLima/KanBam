@@ -8,6 +8,8 @@ function loadCardsFromLocalStorage() {
 }
 
 function addNewCardAndSave(title, description, date, status, dropzoneElement, boardId) {
+    if (boardId === "")
+        boardId = "pendente";
     const cardId = addNewCard(title, description, date, status, dropzoneElement, boardId);
     const cards = loadCardsFromLocalStorage();
     cards.push({ id: cardId, title, description, date, status, boardId });
