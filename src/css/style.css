@@ -257,7 +257,6 @@
   
   .card span {
     font-size: 1.4rem;
-    color: #756966;
   }
   
   .card .tags {
@@ -328,8 +327,7 @@
   border-radius: 50%;
 }
 .delivery-date{
-  display: flex;
-  align-items: center;
+  display: flex;align-items: center;
   gap: 0.5rem;
 }
 
@@ -358,6 +356,7 @@
 .status-options{
   display: flex;
   flex-direction: row;
+  align-items: center;
   gap: 5px;
 }
 
@@ -469,4 +468,41 @@ ul.ks-cboxtags li input[type="checkbox"] {
 
 ul.ks-cboxtags li input[type="checkbox"]:focus+label {
   border: 2px solid rgba(139, 139, 139, .3);
+}
+
+input[type="radio"] {
+  position: relative;
+  appearance: none;
+  width: 1em;
+  height: 1em;
+  margin: 0;
+  border: 1px solid #333;
+  border-radius: 50%;
+  outline: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+input[type="radio"]::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%; /* Tamanho do ponto central */
+  height: 50%; /* Tamanho do ponto central */
+  background-color: white; /* Cor do ponto central do radio button */
+  border-radius: 50%;
+  transition: background-color 0.3s;
+}
+
+input[type="radio"].alta-prioridade:checked::before {
+  background-color: red; /* Cor da bolinha quando o radio button está selecionado */
+}
+
+input[type="radio"].baixa-prioridade:checked::before {
+  background-color: green; /* Cor da bolinha quando o radio button está selecionado */
+}
+input[type="radio"].media-prioridade:checked::before {
+  background-color: var(--amarelo); /* Cor da bolinha quando o radio button está selecionado */
 }
