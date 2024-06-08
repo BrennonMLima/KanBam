@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <!--=============== ICONS ===============-->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KanBan</title>
+    <link rel="stylesheet" href="src/css/style.css" />
+  </head>
+  <body>
+    <div id="app">
+      <nav id="nav">
+        <a href="home.html"
+          ><img src="assets/3.svg" alt="Logo do site" class="logo"
+        /></a>
+        <div id="list-menu">
+          <ul>
+            <li>
+              <a href="home.html">
+                <ion-icon name="albums"></ion-icon>
+                Boards
+              </a>
+            </li>
+            <li>
+              <a href="equipe.html">
+                <ion-icon name="contacts"></ion-icon>
+                Equipe
+              </a>
+            </li>
+            <li>
+              <a href="config.html">
+                <ion-icon name="cog"></ion-icon>
+                Configurações
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <!-- MAIN -->
+
+      <main>
+        <div class="inner">
+          <div class="title-avatar">
+            <h1>Nome KanBan</h1>
+            <div class="membros">
+              <img src="https://github.com/ruanmlopes.png" class="avatar" />
+              <img src="https://github.com/brennonmlima.png" class="avatar" />
+              <a href="#">
+                <ion-icon
+                  name="link"
+                  id="invite-icon"
+                  class="add-icon"
+                ></ion-icon>
+              </a>
+            </div>
+          </div>
+          <!------------------- MODAL CONVITE --------------->
+          <div id="invite-modal" class="card modal">
+            <div class="modalcontent">
+              <div class="margin-top">
+                  <span for="invte-name" style="font-weight: 700"
+                      >E-Mail do Convidado:</span
+                  >
+                  <input
+                      type="text"
+                      id="invite"
+                      style="min-width: 30rem"
+                      class="input-wrapper add-input"
+                  />
+              </div>
+              <div class="margin-top">
+                  <span for="invte-name" style="font-weight: 700">Link:</span>
+                  <input
+                      type="text"
+                      id="url"
+                      style="min-width: 30rem; min-height: 3rem"
+                      class="input-wrapper add-input nofocus"
+                      value="invite.com/"
+                      readonly
+                  />
+                  <input
+                      type="button"
+                      id="copybtn"
+                      class="button margin-top"
+                      value="Copy Url"
+                      onclick="Copy(); closeInviteModal();"
+                  />
+              </div>
+          </div>
+          </div>
+          <!------------------- MODAL CONVITE --------------->
+
+          <section class="filter">
+            <div class="input-wrapper">
+              <ion-icon name="search"></ion-icon>
+              <input
+                type="text"
+                placeholder="Buscar"
+              />
+            </div>
+            <a id="addCardButton" href="#" style="transition: transform 0.3s"
+              ><ion-icon name="add-circle" class="add-icon"></ion-icon
+            ></a>
+          </section>
+
+          <!------------------- MODAL ADD CARD --------------->
+          <div id="add-modal" class="card modal">
+            <div class="modalcontent">
+              <span for="Prioridade" style="font-weight: 700">Prioridade:</span>
+              <div class="status-options">
+                <input
+                  type="radio"
+                  id="altaPrioridade"
+                  name="status"
+                  value="red"
+                />
+                <label for="altaPrioridade">Alta</label><br />
+                <input
+                  type="radio"
+                  id="mediaPrioridade"
+                  name="status"
+                  value="yellow"
+                />
+                <label for="mediaPrioridade">Média</label><br />
+                <input
+                  type="radio"
+                  id="baixaPrioridade"
+                  name="status"
+                  value="green"
+                />
+                <label for="baixaPrioridade">Baixa</label><br />
+              </div>
+              <div class="margin-top">
+                <span for="title" style="font-weight: 700">Título:</span>
+                <input
+                  type="text"
+                  id="title"
+                  style="min-width: 30rem"
+                  class="input-wrapper add-input"
+                />
+              </div>
+              <div class="margin-top">
+                <span for="description" style="font-weight: 700"
+                  >Descrição:</span
+                >
+                <textarea
+                  type="text"
+                  id="description"
+                  class="input-wrapper add-input"
+                ></textarea>
+              </div>
+              <div class="dt-resposible margin-top">
+                <div class="modal-date">
+                  <span for="date" style="font-weight: 700"
+                    >Data de entrega:</span
+                  >
+                  <input
+                    type="date"
+                    id="date"
+                    class="input-wrapper add-input"
+                  />
+                </div>
+                <div id="cbox-responsible">
+                  <span style="font-weight: 700">Responsáveis: </span>
+                  <ul class="ks-cboxtags">
+                    <li>
+                      <input
+                        type="checkbox"
+                        id="checkboxOne"
+                        value="Cléber"
+                      /><label for="checkboxOne">Cléber</label>
+                    </li>
+                    <li>
+                      <input
+                        type="checkbox"
+                        id="checkboxTwo"
+                        value="Rogério"
+                      /><label for="checkboxTwo">Rogério</label>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="dt-resposible">
+                <div>
+                  <a href="#"
+                    ><ion-icon
+                      name="checkmark"
+                      class="add-icon"
+                      id="confirmButton"
+                    ></ion-icon
+                  ></a>
+                </div>
+                <div>
+                  <a id="deleteModalButton" href="#"
+                    ><ion-icon name="close" class="add-icon"></ion-icon
+                  ></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!------------------- MODAL ADD CARD --------------->
+
+          <!------------------- MODAL EDIT CARD --------------->
+          <div id="edit-modal" class="card modal">
+            <div class="modalcontent">
+              <span for="Prioridade" style="font-weight: 700">Prioridade:</span>
+              <div class="status-options">
+                <input
+                  type="radio"
+                  id="altaPrioridade"
+                  name="status"
+                  value="red"
+                />
+                <label for="altaPrioridade">Alta</label><br />
+                <input
+                  type="radio"
+                  id="mediaPrioridade"
+                  name="status"
+                  value="yellow"
+                />
+                <label for="mediaPrioridade">Média</label><br />
+                <input
+                  type="radio"
+                  id="baixaPrioridade"
+                  name="status"
+                  value="green"
+                />
+                <label for="baixaPrioridade">Baixa</label><br />
+              </div>
+              <div class="margin-top">
+                <span for="title" style="font-weight: 700">Título:</span>
+                <input
+                  type="text"
+                  id="edit-title"
+                  style="min-width: 30rem"
+                  class="input-wrapper add-input"
+                />
+              </div>
+              <div class="margin-top">
+                <span for="description" style="font-weight: 700"
+                  >Descrição:</span
+                >
+                <textarea
+                  type="text"
+                  id="edit-description"
+                  class="input-wrapper add-input"
+                ></textarea>
+              </div>
+              <div class="dt-resposible margin-top">
+                <div class="modal-date">
+                  <span for="date" style="font-weight: 700"
+                    >Data de entrega:</span
+                  >
+                  <input
+                    type="date"
+                    id="edit-date"
+                    class="input-wrapper add-input"
+                  />
+                </div>
+                <div id="cbox-responsible">
+                  <span style="font-weight: 700">Responsáveis: </span>
+                  <ul class="ks-cboxtags">
+                    <li>
+                      <input
+                        type="checkbox"
+                        id="checkboxOne"
+                        value="Cléber"
+                      /><label for="checkboxOne">Cléber</label>
+                    </li>
+                    <li>
+                      <input
+                        type="checkbox"
+                        id="checkboxTwo"
+                        value="Rogério"
+                      /><label for="checkboxTwo">Rogério</label>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="dt-resposible">
+                <div>
+                  <a href="#"
+                    ><ion-icon
+                      name="checkmark"
+                      class="add-icon"
+                      id="confirmEditButton"
+                    ></ion-icon
+                  ></a>
+                </div>
+                <div>
+                  <a id="deleteButton" href="#"
+                    ><ion-icon name="trash" class="add-icon"></ion-icon
+                  ></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!------------------- MODAL EDIT CARD --------------->
+          <!-- section kanban -->
+
+          <section class="kanban">
+            <div class="board" id="pendente">
+              <h2>Pendentes</h2>
+              <div class="cards">
+              </div>
+            </div>
+            <div class="board" id="andamento">
+              <h2>Em andamento</h2>
+              <div class="cards"></div>
+            </div>
+            <div class="board" id="concluida">
+              <h2>Concluída</h2>
+              <div class="cards"></div>
+            </div>
+          </section>
+        </div>
+
+        <!-- section kanban -->
+      </main>
+    </div>
+    <script>
+      function setActive(element) {
+        const links = document.querySelectorAll('#list-menu a');
+        links.forEach(link => {
+          link.classList.remove('active');
+        });
+        element.classList.add('active');
+      }
+    </script>
+    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+    <script src="src/js/addCards.js" defer></script>
+    <script src="src/js/dragDrop.js" defer></script>
+    <script src="src/js/saveCards.js" defer></script>
+    <script src="src/js/modal.js" defer></script>
+  </body>
+</html>

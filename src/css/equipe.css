@@ -1,0 +1,16 @@
+.membro{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.info-membro{
+    display: flex;
+    flex-direction: column;
+}
+
+.nofocus{
+    outline: 0.2rem #e3e3e3;
+}
+

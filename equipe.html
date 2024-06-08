@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap"
+      rel="stylesheet"/>
+        <!--=============== ICONS ===============-->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KanBan</title>
+    <link rel="stylesheet" href="src/css/style.css" />
+  </head>
+  <body>
+    <div id="app">
+      <nav id="nav">
+        <a href="home.html"><img src="assets/3.svg" alt="Logo do site" class="logo" /></a>
+        <div id="list-menu">
+          <ul>
+            <li>
+              <a href="home.html">
+                <ion-icon name="albums"></ion-icon>
+                Boards
+              </a>
+            </li>
+            <li>
+              <a href="equipe.html">
+                  <ion-icon name="contacts"></ion-icon>
+                Equipe
+              </a>
+            </li>
+            <li>
+              <a href="config.html">
+                <ion-icon name="cog"></ion-icon>
+                Configurações
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+       <!-- MAIN -->
+
+      <main>
+        <div class="inner">
+          <div class="title-avatar">
+            <h1>Minha Equipe</h1>
+          </div>
+          <div>
+            <section class="kanban">
+            <div class="board">
+                    <div class="equipe">
+                    <div class="membro"
+                        ><img src="https://github.com/JesleySales.png" class="avatar"/>
+                        <div class="info-membro">
+                            <span>Rogério Pinho</span>
+                            <span>rogerio@email.com</span>
+                        </div>
+                    </div>
+                    <div class="membro"
+                        ><img src="https://github.com/brennonmlima.png" class="avatar"/>
+                        <div class="info-membro">
+                            <span>Kléber Faria</span>
+                            <span>kleber@email.com</span>
+                        </div>
+                    </div>
+                    <a href="#">
+                      <ion-icon
+                        name="link"
+                        id="invite-icon"
+                        class="add-icon"
+                      ></ion-icon>
+                    </a>
+                </div>
+                </div>
+            </section>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+    <script src="src/js/script.js" defer></script>
+  </body>
+</html>
