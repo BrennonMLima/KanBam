@@ -32,7 +32,8 @@ confirmButton.addEventListener('click', () => {
     const date = document.getElementById('date').value;
     const status = getStatus();
     const targetDropzone = document.querySelector('.board');
-    addNewCardAndSave(title, description, date, status, targetDropzone);
+    const boardId = targetDropzone.parentNode.id; // Obtém o ID do quadro
+    addNewCardAndSave(title, description, date, status, targetDropzone, boardId); // Passa o ID do quadro
     clearAddModal();
     closeModal();
 });
@@ -71,7 +72,7 @@ confirmEditButton.addEventListener('click', () => {
     const status = getStatus();
 
     editCardAndSave(cardId, title, description, date, status);
-    editCard(cardId, title, description, date, status); // Atualiza o card na interface
+    editCard(cardId, title, description, date, status);
     closeEditModal();
 });
 
@@ -108,25 +109,31 @@ function closeInviteModal() {
 
 function openEditModal(cardId) {
     editModal.style.display = 'block';
-    console.log(cardId);
 
     const cardElement = document.getElementById(cardId);
     if (cardElement) {
         const title = cardElement.querySelector('.title').textContent;
         const description = cardElement.querySelector('.description').textContent;
         const date = cardElement.querySelector('.date span').textContent;
+        const priority = cardElement.querySelector('.status').classList[1];
 
         document.getElementById('edit-title').value = title;
         document.getElementById('edit-description').value = description;
         document.getElementById('edit-date').value = date;
 
+        const statusRadios = document.querySelectorAll('input[name="status"]');
+        statusRadios.forEach(radio => {
+            if (radio.value === priority) {
+                radio.checked = true;
+            }
+        });
+
         const confirmEditButton = document.getElementById('confirmEditButton');
         confirmEditButton.setAttribute('data-card-id', cardId);
     } else {
-        alert('Card nao encontrado:', cardId);
+        alert('Erro - Card não encontrado:', cardId);
     }
 }
-
 function closeEditModal() {
     editModal.style.display = 'none';
 }

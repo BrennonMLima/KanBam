@@ -74,45 +74,43 @@
           <div id="invite-modal" class="card modal">
             <div class="modalcontent">
               <div class="margin-top">
-                  <span for="invte-name" style="font-weight: 700"
-                      >E-Mail do Convidado:</span
-                  >
-                  <input
-                      type="text"
-                      id="invite"
-                      style="min-width: 30rem"
-                      class="input-wrapper add-input"
-                  />
+                <span for="invte-name" style="font-weight: 700"
+                  >E-Mail do Convidado:</span
+                >
+                <input
+                  type="text"
+                  id="invite"
+                  style="min-width: 30rem"
+                  class="input-wrapper add-input"
+                />
               </div>
               <div class="margin-top">
-                  <span for="invte-name" style="font-weight: 700">Link:</span>
-                  <input
-                      type="text"
-                      id="url"
-                      style="min-width: 30rem; min-height: 3rem"
-                      class="input-wrapper add-input nofocus"
-                      value="invite.com/"
-                      readonly
-                  />
-                  <input
-                      type="button"
-                      id="copybtn"
-                      class="button margin-top"
-                      value="Copy Url"
-                      onclick="Copy(); closeInviteModal();"
-                  />
+                <span for="invte-name" style="font-weight: 700">Link:</span>
+                <input
+                  type="text"
+                  id="url"
+                  style="min-width: 30rem; min-height: 3rem"
+                  class="input-wrapper add-input nofocus"
+                  value="invite.com/"
+                  readonly
+                />
+                <input
+                  type="button"
+                  id="copybtn"
+                  class="button margin-top"
+                  value="Copy Url"
+                  onclick="Copy(); closeInviteModal();"
+                />
+                <p>*Será implementado</p>
               </div>
-          </div>
+            </div>
           </div>
           <!------------------- MODAL CONVITE --------------->
 
           <section class="filter">
             <div class="input-wrapper">
               <ion-icon name="search"></ion-icon>
-              <input
-                type="text"
-                placeholder="Buscar"
-              />
+              <input type="text" placeholder="Buscar (será implementado)" />
             </div>
             <a id="addCardButton" href="#" style="transition: transform 0.3s"
               ><ion-icon name="add-circle" class="add-icon"></ion-icon
@@ -126,25 +124,25 @@
               <div class="status-options">
                 <input
                   type="radio"
-                  id="altaPrioridade"
-                  name="status"
-                  value="red"
-                />
-                <label for="altaPrioridade">Alta</label><br />
-                <input
-                  type="radio"
-                  id="mediaPrioridade"
-                  name="status"
-                  value="yellow"
-                />
-                <label for="mediaPrioridade">Média</label><br />
-                <input
-                  type="radio"
                   id="baixaPrioridade"
                   name="status"
                   value="green"
                 />
                 <label for="baixaPrioridade">Baixa</label><br />
+                <input
+                type="radio"
+                id="mediaPrioridade"
+                name="status"
+                value="yellow"
+              />
+              <label for="mediaPrioridade">Média</label><br />
+                <input
+                  type="radio"
+                  id="altaPrioridade"
+                  name="status"
+                  value="red"
+                />
+                <label for="altaPrioridade">Alta</label><br />
               </div>
               <div class="margin-top">
                 <span for="title" style="font-weight: 700">Título:</span>
@@ -223,25 +221,25 @@
               <div class="status-options">
                 <input
                   type="radio"
-                  id="altaPrioridade"
-                  name="status"
-                  value="red"
-                />
-                <label for="altaPrioridade">Alta</label><br />
-                <input
-                  type="radio"
-                  id="mediaPrioridade"
-                  name="status"
-                  value="yellow"
-                />
-                <label for="mediaPrioridade">Média</label><br />
-                <input
-                  type="radio"
                   id="baixaPrioridade"
                   name="status"
                   value="green"
                 />
                 <label for="baixaPrioridade">Baixa</label><br />
+                <input
+                type="radio"
+                id="mediaPrioridade"
+                name="status"
+                value="yellow"
+              />
+              <label for="mediaPrioridade">Média</label><br />
+                <input
+                  type="radio"
+                  id="altaPrioridade"
+                  name="status"
+                  value="red"
+                />
+                <label for="altaPrioridade">Alta</label><br />
               </div>
               <div class="margin-top">
                 <span for="title" style="font-weight: 700">Título:</span>
@@ -317,8 +315,7 @@
           <section class="kanban">
             <div class="board" id="pendente">
               <h2>Pendentes</h2>
-              <div class="cards">
-              </div>
+              <div class="cards"></div>
             </div>
             <div class="board" id="andamento">
               <h2>Em andamento</h2>
@@ -334,15 +331,6 @@
         <!-- section kanban -->
       </main>
     </div>
-    <script>
-      function setActive(element) {
-        const links = document.querySelectorAll('#list-menu a');
-        links.forEach(link => {
-          link.classList.remove('active');
-        });
-        element.classList.add('active');
-      }
-    </script>
     <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
     <script src="src/js/addCards.js" defer></script>
     <script src="src/js/dragDrop.js" defer></script>

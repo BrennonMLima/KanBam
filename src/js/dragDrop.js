@@ -17,6 +17,7 @@ function drag() {}
 function dragend() {
     dropzones.forEach(board => board.classList.remove('highlight'));
     this.classList.remove('is-dragging');
+    saveCardBoardId(this.id);
 }
 
 dropzones.forEach(board => {
@@ -38,6 +39,27 @@ function dragleave() {
     this.classList.remove('over');
 }
 
-function drop() {
+function drop(event) {
+    event.preventDefault();
     this.classList.remove('over');
+    const cardBeingDragged = document.querySelector('.is-dragging');
+    cardBeingDragged.classList.remove('is-dragging');
+}
+
+function saveCardBoardId(cardId) {
+    const cardElement = document.getElementById(cardId);
+    if (cardElement) {
+        const boardElement = cardElement.closest('.board');
+        const boardId = boardElement ? boardElement.id : null;
+        
+        if (boardId) {
+            const cards = loadCardsFromLocalStorage();
+            const cardIndex = cards.findIndex(card => card.id === cardId);
+            if (cardIndex !== -1) {
+                cards[cardIndex].boardId = boardId;
+                saveCardsToLocalStorage(cards);
+            }
+        }
+    }
+    
 }

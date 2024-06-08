@@ -82,16 +82,16 @@ function createCard(cardId, title, description, date, status) {
   return card;
 }
 
-function addNewCard(title, description, date, status, dropzoneElement) {
+function addNewCard(title, description, date, status, dropzoneElement, boardId) {
   const cardId = generateUUID();
   const newCard = createCard(cardId, title, description, date, status);
-  
+
   newCard.addEventListener('dragstart', dragstart);
   newCard.addEventListener('drag', drag);
   newCard.addEventListener('dragend', dragend);
-  
+
   dropzoneElement.appendChild(newCard);
-  
+
   return cardId;
 }
 
@@ -107,12 +107,12 @@ function editCard(cardId, title, description, date, status) {
       statusDiv.className = 'status ' + status;
       statusDiv.setAttribute('aria-label', 'Status: ' + status);
   } else {
-      console.error('Card not found:', cardId);
+      console.error('Card não encontrado:', cardId);
   }
 }
 
 function generateUUID() {
-  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
       var r = Math.random() * 16 | 0,
           v = c == 'x' ? r : (r & 0x3 | 0x8);
       return v.toString(16);

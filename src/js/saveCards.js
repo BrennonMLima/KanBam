@@ -8,9 +8,9 @@ function loadCardsFromLocalStorage() {
 }
 
 function addNewCardAndSave(title, description, date, status, dropzoneElement, boardId) {
-    const cardId = addNewCard(title, description, date, status, dropzoneElement, boardId); // Passa o ID do board
+    const cardId = addNewCard(title, description, date, status, dropzoneElement, boardId);
     const cards = loadCardsFromLocalStorage();
-    cards.push({ id: cardId, title, description, date, status, boardId }); // Salva o ID do board com o card
+    cards.push({ id: cardId, title, description, date, status, boardId });
     saveCardsToLocalStorage(cards);
     return cardId;
 }
@@ -22,7 +22,7 @@ function editCardAndSave(cardId, title, description, date, status) {
         cards[cardIndex] = { id: cardId, title, description, date, status, boardId: cards[cardIndex].boardId };
         saveCardsToLocalStorage(cards);
     } else {
-        console.error('Card not found:', cardId);
+        console.error('Card não encontrado:', cardId);
     }
 }
 
@@ -33,7 +33,7 @@ function deleteCardAndSave(cardId) {
         cards.splice(cardIndex, 1);
         saveCardsToLocalStorage(cards);
     } else {
-        console.error('Card not found:', cardId);
+        console.error('Card não encontrado:', cardId);
     }
 }
 
@@ -52,9 +52,11 @@ window.addEventListener('DOMContentLoaded', () => {
     boards.forEach(board => {
         const dropzoneElement = board.querySelector('.cards');
         const boardId = board.id;
-        const cards = loadCardsFromLocalStorage(boardId);
+        const cards = loadCardsFromLocalStorage();
         cards.forEach(card => {
-            loadSavedCard(card.id, card.title, card.description, card.date, card.status, dropzoneElement);
+            if (card.boardId === boardId) {
+                loadSavedCard(card.id, card.title, card.description, card.date, card.status, dropzoneElement);
+            }
         });
     });
 });
