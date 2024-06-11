@@ -1,4 +1,4 @@
-function createCard(cardId, title, description, date, status) {
+function createCard(cardId, title, description, date, status, responsibles) {
   const card = document.createElement('div');
   card.classList.add('card');
   card.id = cardId;
@@ -43,17 +43,14 @@ function createCard(cardId, title, description, date, status) {
 
   const responsibleAvatar = document.createElement('div');
   responsibleAvatar.classList.add('responsible-avatar');
-
-  const avatar1 = document.createElement('img');
-  avatar1.src = 'https://github.com/ruanmlopes.png';
-  avatar1.classList.add('r-avatar');
-  responsibleAvatar.appendChild(avatar1);
-
-  const avatar2 = document.createElement('img');
-  avatar2.src = 'https://github.com/brennonmlima.png';
-  avatar2.classList.add('r-avatar');
-  responsibleAvatar.appendChild(avatar2);
-
+  if (responsibles) {
+    responsibles.forEach(responsible => {
+        const avatar = document.createElement('img');
+        avatar.src = `https://github.com/${responsible}.png`;
+        avatar.classList.add('r-avatar');
+        responsibleAvatar.appendChild(avatar);
+    });
+  }
   rodapeCard.appendChild(responsibleAvatar);
 
   const deliveryDate = document.createElement('div');
@@ -66,10 +63,15 @@ function createCard(cardId, title, description, date, status) {
   icon.classList.add('icon-date');
   dateIcon.appendChild(icon);
 
+  const data = new Date(date);
+  const offset = data.getTimezoneOffset() * 60000;
+  const dataFormatada = new Date(data.getTime() + offset).toLocaleDateString('pt-BR');
+
   const dateElement = document.createElement('div');
   dateElement.classList.add('date');
+  dateElement.setAttribute('data-date', date); 
   const dateText = document.createElement('span');
-  dateText.textContent = date;
+  dateText.textContent = dataFormatada;
   dateElement.appendChild(dateText);
 
   deliveryDate.appendChild(dateIcon);
@@ -82,9 +84,9 @@ function createCard(cardId, title, description, date, status) {
   return card;
 }
 
-function addNewCard(title, description, date, status, dropzoneElement, boardId) {
+function addNewCard(title, description, date, status, dropzoneElement, responsibles) {
   const cardId = generateUUID();
-  const newCard = createCard(cardId, title, description, date, status);
+  const newCard = createCard(cardId, title, description, date, status, responsibles);
 
   newCard.addEventListener('dragstart', dragstart);
   newCard.addEventListener('drag', drag);
@@ -95,17 +97,31 @@ function addNewCard(title, description, date, status, dropzoneElement, boardId) 
   return cardId;
 }
 
-function editCard(cardId, title, description, date, status) {
+function editCard(cardId, title, description, date, status, responsibles) {
   const cardElement = document.getElementById(cardId);
 
   if (cardElement) {
       cardElement.querySelector('.title').textContent = title;
       cardElement.querySelector('.description').textContent = description;
-      cardElement.querySelector('.date span').textContent = date;
 
+      const data = new Date(date);
+      const offset = data.getTimezoneOffset() * 60000; 
+      const formattedDueDate = new Date(data.getTime() + offset).toLocaleDateString('pt-BR');
+
+      cardElement.querySelector('.date span').textContent = formattedDueDate;
+    
       const statusDiv = cardElement.querySelector('.status');
       statusDiv.className = 'status ' + status;
       statusDiv.setAttribute('aria-label', 'Status: ' + status);
+
+      const responsibleAvatar = cardElement.querySelector('.responsible-avatar');
+      responsibleAvatar.innerHTML = '';
+      responsibles.forEach(responsible => {
+          const avatar = document.createElement('img');
+          avatar.src = `https://github.com/${responsible}.png`;
+          avatar.classList.add('r-avatar');
+          responsibleAvatar.appendChild(avatar);
+      });
   } else {
       console.error('Card não encontrado:', cardId);
   }

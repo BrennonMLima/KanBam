@@ -24,28 +24,32 @@
   </head>
   <body>
     <div id="app">
+      
       <nav id="nav">
+        <button class="menu-toggle">
+          <ion-icon name="menu"> </ion-icon>
+        </button>
         <a href="home.html"
           ><img src="assets/3.svg" alt="Logo do site" class="logo"
         /></a>
-        <div id="list-menu">
+        <div>
           <ul>
             <li>
               <a href="home.html">
                 <ion-icon name="albums"></ion-icon>
-                Boards
+                <span class="list-menu">Boards</span>
               </a>
             </li>
             <li>
               <a href="equipe.html">
                 <ion-icon name="contacts"></ion-icon>
-                Equipe
+                <span class="list-menu">Equipe</span>
               </a>
             </li>
             <li>
               <a href="config.html">
                 <ion-icon name="cog"></ion-icon>
-                Configurações
+                <span class="list-menu">Configurações</span>
               </a>
             </li>
           </ul>
@@ -60,7 +64,7 @@
             <h1>Nome KanBan</h1>
             <div class="membros">
               <img src="https://github.com/ruanmlopes.png" class="avatar" />
-              <img src="https://github.com/brennonmlima.png" class="avatar" />
+              <img src="https://github.com/brennonmlima.png" class="avatar"  />
               <a href="#">
                 <ion-icon
                   name="link"
@@ -164,21 +168,13 @@
                   <span style="font-weight: 700">Responsáveis: </span>
                   <ul class="ks-cboxtags">
                     <li>
-                      <input
-                        type="checkbox"
-                        id="checkboxOne"
-                        value="Cléber"
-                      /><label for="checkboxOne">Cléber</label>
+                        <input type="checkbox" name="checkbox" id="cardId-Brennon" value="Brennonmlima" class="checkbox" /><label for="cardId-Brennon">Brennon</label>
                     </li>
                     <li>
-                      <input
-                        type="checkbox"
-                        id="checkboxTwo"
-                        value="Rogério"
-                      /><label for="checkboxTwo">Rogério</label>
+                        <input type="checkbox" name="checkbox" id="cardId-Kleber" value="ruanmlopes" class="checkbox" /><label for="cardId-Kleber">Kleber</label>
                     </li>
-                  </ul>
-                </div>
+                </ul>
+              </div>
               </div>
               <div class="dt-resposible">
                 <div>
@@ -205,13 +201,13 @@
             <div class="modalcontent">
               <span for="Prioridade" style="font-weight: 700">Prioridade:</span>
               <div class="status-options">
-                <input type="radio" id="baixaPrioridade" name="status" value="green" class="baixa-prioridade" />
-                <label for="baixaPrioridade">Baixa</label><br />
-                <input type="radio" id="mediaPrioridade" name="status" value="yellow" class="media-prioridade" />
-                <label for="mediaPrioridade">Média</label><br />
-                <input type="radio" id="altaPrioridade" name="status" value="red" class="alta-prioridade" />
-                <label for="altaPrioridade">Alta</label><br />
-              </div>
+                <input type="radio" id="edit-baixaPrioridade" name="status" value="green" class="baixa-prioridade" />
+                <label for="edit-baixaPrioridade">Baixa</label><br />
+                <input type="radio" id="edit-mediaPrioridade" name="status" value="yellow" class="media-prioridade" />
+                <label for="edit-mediaPrioridade">Média</label><br />
+                <input type="radio" id="edit-altaPrioridade" name="status" value="red" class="alta-prioridade" />
+                <label for="edit-altaPrioridade">Alta</label><br />
+            </div>
               <div class="margin-top">
                 <span for="title" style="font-weight: 700">Título:</span>
                 <input
@@ -246,21 +242,13 @@
                   <span style="font-weight: 700">Responsáveis: </span>
                   <ul class="ks-cboxtags">
                     <li>
-                      <input
-                        type="checkbox"
-                        id="checkboxOne"
-                        value="Cléber"
-                      /><label for="checkboxOne">Cléber</label>
+                        <input type="checkbox" name="checkbox" id="edit-cardId-Brennon" value="brennonmlima" /><label for="edit-cardId-Brennon">Brennon</label>
                     </li>
                     <li>
-                      <input
-                        type="checkbox"
-                        id="checkboxTwo"
-                        value="Rogério"
-                      /><label for="checkboxTwo">Rogério</label>
+                        <input type="checkbox" name="checkbox" id="edit-cardId-Kleber" value="ruanmlopes" /><label for="edit-cardId-Kleber">Kleber</label>
                     </li>
-                  </ul>
-                </div>
+                </ul>
+              </div>
               </div>
               <div class="dt-resposible">
                 <div>
@@ -307,5 +295,6 @@
     <script src="src/js/dragDrop.js" defer></script>
     <script src="src/js/saveCards.js" defer></script>
     <script src="src/js/modal.js" defer></script>
+    <script src="src/js/script.js" defer></script>
   </body>
 </html>

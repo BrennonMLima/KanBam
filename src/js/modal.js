@@ -1,3 +1,4 @@
+// modal.js
 const addCardButton = document.getElementById('addCardButton');
 const deleteModalButton = document.getElementById('deleteModalButton');
 const addModal = document.getElementById('add-modal');
@@ -31,9 +32,10 @@ confirmButton.addEventListener('click', () => {
     const description = document.getElementById('description').value;
     const date = document.getElementById('date').value;
     const status = getStatus();
+    const responsibles = Array.from(document.querySelectorAll('#add-modal .ks-cboxtags input[type="checkbox"]:checked')).map(checkbox => checkbox.value);
     const targetDropzone = document.querySelector('.board');
-    const boardId = targetDropzone.parentNode.id; // Obtém o ID do quadro
-    addNewCardAndSave(title, description, date, status, targetDropzone, boardId); // Passa o ID do quadro
+    const boardId = targetDropzone.parentNode.id; 
+    addNewCardAndSave(title, description, date, status, targetDropzone, boardId, responsibles); 
     clearAddModal();
     closeModal();
 });
@@ -70,9 +72,10 @@ confirmEditButton.addEventListener('click', () => {
     const description = document.getElementById('edit-description').value;
     const date = document.getElementById('edit-date').value;
     const status = getStatus();
+    const responsibles = Array.from(document.querySelectorAll('#edit-modal .ks-cboxtags input[type="checkbox"]:checked')).map(checkbox => checkbox.value);
 
-    editCardAndSave(cardId, title, description, date, status);
-    editCard(cardId, title, description, date, status);
+    editCardAndSave(cardId, title, description, date, status, responsibles);
+    editCard(cardId, title, description, date, status, responsibles);
     closeEditModal();
 });
 
@@ -114,7 +117,7 @@ function openEditModal(cardId) {
     if (cardElement) {
         const title = cardElement.querySelector('.title').textContent;
         const description = cardElement.querySelector('.description').textContent;
-        const date = cardElement.querySelector('.date span').textContent;
+        const date = cardElement.querySelector('.date').getAttribute('data-date'); 
         const priority = cardElement.querySelector('.status').classList[1];
 
         document.getElementById('edit-title').value = title;
@@ -128,12 +131,13 @@ function openEditModal(cardId) {
             }
         });
 
-        const confirmEditButton = document.getElementById('confirmEditButton');
         confirmEditButton.setAttribute('data-card-id', cardId);
     } else {
         alert('Erro - Card não encontrado:', cardId);
     }
 }
+
+
 function closeEditModal() {
     editModal.style.display = 'none';
 }
@@ -166,3 +170,4 @@ function clearAddModal() {
         checkbox.checked = false;
     });
 }
+
