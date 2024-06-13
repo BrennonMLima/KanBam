@@ -76,7 +76,7 @@
   }
 
   #nav.nav-close {
-    padding: 2.6rem 10px 0 10px;
+    padding: 2.6rem 5px 0 5px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -136,15 +136,10 @@
     font-size: 2rem;
   }
 
-  .nav-footer.nav-close {
-    display: flex;
-    align-items: center;
-  }
-
   .nav-footer{
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 10px;
   }
 
   .nav-footer a{
